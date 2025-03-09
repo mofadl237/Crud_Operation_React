@@ -1,43 +1,51 @@
-import React from "react";
+
 import Image from "./Image";
 import Button from "../UI/Button";
+import { IProduct } from './Interfaces/index';
+import { slicerText } from "./Utilities";
 
+interface IProps{
+  productInfo:IProduct;
+}
 
-const ProductCard = () => {
+const ProductCard = ({productInfo}:IProps) => {
+  const {title, description,imageURL,price,category} = productInfo;
+  const deleteProduct = ()=>{
+    console.log("Hello");
+  }
   return (
     <div className="border rounded-md p-2 ">
       <Image
-        imageUrl="https://images.pexels.com/photos/247769/pexels-photo-247769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        imageUrl={imageURL}
         alt="this Image Camera"
-        className="rounded-md"
+        className="rounded-md w-full h-48 object-cover"
       />
 
-      <h3 className="my-2">2022 sensor for qualified </h3>
+      <h3 className="my-2">{title} </h3>
 
       <p>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Cum quis optio
-        saepe perferendis distinctio.
+        {slicerText(description)}
       </p>
 
       <div className="flex space-x-2 my-2">
-        <span className="w-5 h-5 rounded-full bg-indigo-400 cursor-pointer "></span>
+        <span className="w-5 h-5 rounded-full bg-indigo-600 cursor-pointer "></span>
         <span className="w-5 h-5 rounded-full bg-red-400 cursor-pointer"></span>
         <span className="w-5 h-5 rounded-full bg-black cursor-pointer"></span>
       </div>
 
       <div className="flex items-center justify-between">
-        <h3>$500.00</h3>
+        <h3>{`${price}$`}</h3>
 
         <Image
-          imageUrl="https://images.pexels.com/photos/247769/pexels-photo-247769.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="this Image Camera"
+          imageUrl={category.imageURL}
+          alt={`${productInfo.id}  Image `}
           className="rounded-full w-10 h-10 object-cover"
         />
       </div>
 
       <div className="flex space-x-2 mt-4">
-        <Button className="bg-indigo-500 ">EDIT</Button>
-        <Button className="bg-red-500 ">DELETE</Button>
+        <Button className="bg-indigo-600 " onClick={deleteProduct}>EDIT</Button>
+        <Button className="bg-red-600 ">DELETE</Button>
       </div>
     </div>
   );
