@@ -3,7 +3,7 @@ export interface IProduct{
     title:string;
     description:string;
     imageURL:string;
-    price:number;
+    price:number|string;
     colors:string[];
     category:{
         name:string,
@@ -11,3 +11,12 @@ export interface IProduct{
 
     }
 }
+type InputName = 'title' |'description'|'imageURL'|'price';
+
+export interface IInput{
+    id:string;
+    type:string;
+    name:InputName;
+    label:string;
+}
+
