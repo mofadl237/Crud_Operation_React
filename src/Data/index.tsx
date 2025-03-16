@@ -1,4 +1,4 @@
-import { IProduct, IInput } from "../Interfaces";
+import { IProduct, IInput, ICategory } from "../Interfaces";
 
 import { v4 as uuid } from 'uuid';
 export const products: IProduct[] = [
@@ -241,4 +241,57 @@ export const colorsData:string[]=[
   '#1F8A70',
   '#820000',
   '#FF0032'
+]
+
+
+
+export const Category:ICategory[] = [
+  {
+    id: 1,
+    name: 'Clothes',
+    imageURL:
+      'https://images.unsplash.com/photo-1491528323818-fdd1faba62cc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 2,
+    name: 'Cars',
+    imageURL:
+      'https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 3,
+    name: 'T-Shirt',
+    imageURL:
+      'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.25&w=256&h=256&q=80',
+  },
+  {
+    id: 4,
+    name: 'Swites',
+    imageURL:
+      'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 5,
+    name: 'Mobile',
+    imageURL:
+      'https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 6,
+    name: 'Electrical',
+    imageURL:
+      'https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 7,
+    name: 'Pen',
+    imageURL:
+      'https://images.unsplash.com/photo-1568409938619-12e139227838?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  },
+  {
+    id: 8,
+    name: 'Gold',
+    imageURL:
+      'https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+  }
 ]

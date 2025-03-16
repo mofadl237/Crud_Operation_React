@@ -6,6 +6,8 @@ const slicerText = (text: string, maxLength: number = 50) => {
   }
 };
 
+const slicerNumber=(str:string )=>{
+  return str.replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
-
-export { slicerText };
+export { slicerText ,slicerNumber};

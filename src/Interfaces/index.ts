@@ -20,3 +20,5 @@ export interface IInput{
     label:string;
 }
 
+
+export interface ICategory {id:number|string , name:string ,imageURL:string}

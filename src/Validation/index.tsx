@@ -9,7 +9,7 @@ export const validationForm =(product:IProductCustom)=>{
     }
 
     const validUrl = /^(https?|ftp):\/\/([^\s/$.?#].[^\s]*)(\/[^\s?#]*)?(\?[^\s#]*)?(#\S*)?$/.test(product.imageURL);
-    const validTitle =/^[A-Z]\S{2,}$/.test(product.title);
+    const validTitle =/^[A-Z][\S{1,}\s]+$/.test(product.title);
 
     if(!title.trim() || !validTitle){
         errors.title =  "Valid Capital Letter && minimum 2 character";
