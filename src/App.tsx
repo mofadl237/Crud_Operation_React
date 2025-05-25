@@ -1,5 +1,5 @@
-import { useState, FormEvent, ChangeEvent } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+import { useState, FormEvent, ChangeEvent, useCallback } from "react";
+import toast, { Toaster } from "react-hot-toast";
 import ProductCard from "./Components/ProductCard";
 
 import {
@@ -31,16 +31,16 @@ function App() {
   const [product, setProduct] = useState(defaultProduct);
   const [EditProduct, setEditProduct] = useState(defaultProduct);
   const [productData, setProducts] = useState<IProduct[]>(products);
-
-  const [indexProduct, setIndexProduct] = useState<number>(0);
-
-  const [tempColor, setTemColor] = useState<string[]>([]);
   const [errors, setErrors] = useState({
     title: "",
     description: "",
     imageURL: "",
     price: "",
   });
+
+  const [indexProduct, setIndexProduct] = useState<number>(0);
+
+  const [tempColor, setTemColor] = useState<string[]>([]);
   const [selected, setSelected] = useState(Category[3]);
 
   //********* change State **********/
@@ -53,15 +53,15 @@ function App() {
   function closeEditModal() {
     setIsOpenEdit(false);
   }
-  function openEditModal() {
+  const openEditModal = useCallback(() => {
     setIsOpenEdit(true);
-  }
+  }, []);
   function closeRemoveModal() {
     setIsOpenRemove(false);
   }
-  function openRemoveModal() {
+  const openRemoveModal = useCallback(() => {
     setIsOpenRemove(true);
-  }
+  }, []);
 
   const removeProduct = () => {
     //1-Deep Copy
@@ -112,9 +112,7 @@ function App() {
     const errors = validationForm(product);
     setErrors(errors);
     //check valid
-    const isFoundError =
-      Object.values(errors).every((val) => val === "") &&
-      Object.values(errors).every((val) => val === "");
+    const isFoundError = Object.values(errors).every((val) => val === "");
     if (!isFoundError) return;
 
     setProducts((prev) => [
@@ -145,7 +143,7 @@ function App() {
     if (!isFoundError) return;
 
     //1- deep Copy
-    const updateProducts = [...products];
+    const updateProducts = [...productData];
 
     //2-Action
     updateProducts[indexProduct] = { ...EditProduct, colors: tempColor };
@@ -159,6 +157,7 @@ function App() {
     closeEditModal();
     setTemColor([]);
   };
+
   //********* Rerender **********/
 
   //1-render Data Input
@@ -300,7 +299,7 @@ function App() {
               setSelected={(value) =>
                 setEditProduct({ ...EditProduct, category: value })
               }
-            />
+            /> 
 
             <div className="flex my-3 item-center space-x-3">
               <Button className="bg-indigo-500 hover:bg-indigo-600">

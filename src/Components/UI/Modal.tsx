@@ -1,5 +1,5 @@
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, ReactNode } from "react";
+import { Fragment, memo, ReactNode } from "react";
 
 
 interface IProps {
@@ -9,7 +9,7 @@ interface IProps {
   children: ReactNode;
 }
 
-export default function Modal({ isOpen, closeModal, title, children }: IProps) {
+ function Modal({ isOpen, closeModal, title, children }: IProps) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -23,7 +23,7 @@ export default function Modal({ isOpen, closeModal, title, children }: IProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-black/25" />
+            <div className="fixed inset-0 backdrop-blur-md bg-black/25" />
           </Transition.Child>
 
           <div className="fixed inset-0 overflow-y-auto">
@@ -55,3 +55,4 @@ export default function Modal({ isOpen, closeModal, title, children }: IProps) {
     </>
   );
 }
+export default memo(Modal);

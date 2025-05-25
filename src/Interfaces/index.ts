@@ -8,7 +8,6 @@ export interface IProduct{
     category:{
         name:string,
         imageURL:string
-
     }
 }
 type InputName = 'title' |'description'|'imageURL'|'price';

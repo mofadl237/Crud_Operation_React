@@ -4,6 +4,7 @@ import Button from "./UI/Button";
 import { IProduct } from '../Interfaces/index';
 import { slicerText,slicerNumber } from "../Utilities";
 import { CircleColor } from "./UI/CircleColor";
+import { memo } from "react";
 
 interface IProps{
   productInfo:IProduct;
@@ -23,7 +24,6 @@ const ProductCard = ({productInfo,setEditProduct,openEditModal,setTempColor,idx,
     setEditProduct(productInfo);
     setTempColor(productInfo.colors);
     setIndexProduct(idx);
-
   }
   
   const deleteProduct = ()=>{
@@ -72,4 +72,4 @@ const ProductCard = ({productInfo,setEditProduct,openEditModal,setTempColor,idx,
   );
 };
 
-export default ProductCard;
+export default memo(ProductCard);
