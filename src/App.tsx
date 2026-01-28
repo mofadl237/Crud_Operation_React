@@ -44,21 +44,22 @@ function App() {
   const [selected, setSelected] = useState(Category[3]);
 
   //********* change State **********/
-  function closeModal() {
+  const closeModal =useCallback(()=> {
     setIsOpen(false);
-  }
-  function openModal() {
+  },[])
+  const openModal =useCallback(()=> {
     setIsOpen(true);
-  }
-  function closeEditModal() {
+  },[]);
+  const closeEditModal =useCallback(()=> {
     setIsOpenEdit(false);
-  }
+  },[])
   const openEditModal = useCallback(() => {
     setIsOpenEdit(true);
   }, []);
-  function closeRemoveModal() {
+  
+  const closeRemoveModal = useCallback(() => {
     setIsOpenRemove(false);
-  }
+  }, []);
   const openRemoveModal = useCallback(() => {
     setIsOpenRemove(true);
   }, []);
@@ -94,16 +95,16 @@ function App() {
   };
 
   //2- changeHandler
-  const changeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+  const changeHandler =useCallback( (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setProduct({ ...product, [name]: value });
-    setErrors({ ...errors, [name]: "" });
-  };
-  const changeEditHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setProduct(prev=>({...prev , [name]:value}));
+    setErrors(prev=>({...prev , [name]:""}));
+  },[]);
+  const changeEditHandler = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setEditProduct({ ...EditProduct, [name]: value });
-    setErrors({ ...errors, [name]: "" });
-  };
+    setEditProduct(prev=>({...prev ,[name]:value}));
+    setErrors(prev=>({...prev,[name]:""}));
+  },[]);
   //3- submit Handler
 
   const submitHandler = (e: FormEvent<HTMLFormElement>) => {

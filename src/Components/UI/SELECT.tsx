@@ -4,12 +4,13 @@ import { ChevronUpDownIcon } from '@heroicons/react/16/solid'
 import { CheckIcon } from '@heroicons/react/20/solid'
 import { ICategory } from './../../Interfaces/index';
 import { Category } from './../../Data/index';
+import { memo } from 'react';
 interface IProps{
   selected:{name:string,imageURL:string};
   setSelected:(category:ICategory)=>void;
 }
 
-export default function SELECT({selected , setSelected}:IProps) {
+const  SELECT = ({selected , setSelected}:IProps)=> {
   
 
   return (
@@ -55,3 +56,5 @@ export default function SELECT({selected , setSelected}:IProps) {
     </Listbox>
   )
 }
+
+export default memo(SELECT);

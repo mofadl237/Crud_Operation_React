@@ -1,4 +1,4 @@
-import { InputHTMLAttributes } from "react";
+import { InputHTMLAttributes, memo } from "react";
 
 interface IProps extends InputHTMLAttributes<HTMLInputElement> {
     //escape Error 
@@ -14,4 +14,4 @@ const INPUT = ({ ...rest }: IProps) => {
   );
 };
 
-export default INPUT;
+export default memo(INPUT);
