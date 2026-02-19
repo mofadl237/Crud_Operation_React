@@ -1,21 +1,34 @@
+// Declarative  On Agent 
+
 pipeline{
-    agent {
-        label 'aws-ec2'
-    } 
     stages{
-        stage('build'){
+        stage('build project'){
             steps{
-                sh """
-                echo "Stages Build"
-                """
+                script{
+                    echo "Step One build project"
+                }
+            }
+        }
+         stage('run project'){
+            steps{
+                script{
+                    echo "Step Two run project"
+                }
+            }
+        }
+         stage('build & Push Image'){
+            steps{
+                script{
+                    echo "Step Three build & Push Image"
+                }
             }
         }
 
-         stage('Test'){
+         stage('Slack Integration'){
             steps{
-                sh """
-                echo "Stages Test"
-                """
+                script{
+                    echo "Step Four Slack Integration"
+                }
             }
         }
 
